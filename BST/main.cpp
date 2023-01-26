@@ -1,31 +1,33 @@
 #include "BST.h"
 
-int main() {
-
-    int size; // number of emelements to sort
-    int max; // Maximum value that the elements of the array can have
+int *RamdomArrayGenerator(int size, int max) {
     
-    //Ramdom number generator
-    std::cout << "Please Enter the size of the Array: ";
-    std::cin >> size;
-    
-    std::cout << "Maximum value that the elements of the array can have: ";
-    std::cin >> max;
-
-    int nums[size]; //Declaring an array thaat hold 10 elements of the int data type
+    static int array[100];
     
     //give the array some ramdom initial values
-    for (int t=0; t<size; t++) {
+    for (int i=0; i<10; i++) {
         
-        nums[t] = rand();
+        *(array+i) = rand();
         
         //Do not allow any random value to be higher than max
-        while (nums[t] > max) {
+        while (*(array+i) > max) {
             
-            nums[t] = rand();
+            *(array+i) = rand();
         }
-        std::cout << "Index " << t << " has been assigned a value\n.";
+        std::cout << "Index " << i << " has been assigned a value: " << *(array+i) << ".\n";
     }
+    
+    return array;
+}
+
+
+int main() {
+
+    int size = 10;
+    int max = 10;
+
+    // Declaring an array thaat hold 10 elements of the int data type
+    int *nums = RamdomArrayGenerator(size, max);
     
     cout << '\n';
     
@@ -39,22 +41,20 @@ int main() {
     BST<int> tree;
 
     // Add elements to the tree
-    for (auto i : nums) {
-        tree.Insert(i);
-    }
+    for (int i=0; i<size; i++) tree.Insert(nums[i]);
 
+    // Sort Array based on the BST
     int *sortedArr;
-
     sortedArr = tree.ConvertToArray();
 
     // Print Sorted Array
-    for(int i = 0; i < tree.getNumOfElements(); i++) {
-        
+    for(int i = 0; i < tree.getNumOfElements(); i++)
         std::cout << *(sortedArr+i) << " ";
-    }
+    
     std::cout << '\n';
 
-    tree.Dump();
+    // Print Tree
+    tree.PrintBST();
 
     return 0;
 }

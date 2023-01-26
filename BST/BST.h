@@ -263,7 +263,7 @@ public:
     }   }
 
     // Dumps a representation of the tree to cout
-    void Dump() const {
+    void PrintBST() const {
         const int d = get_max_depth();
     
         // If this tree is empty, tell someone
