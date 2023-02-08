@@ -1,11 +1,12 @@
-#include "BST.h"
+#include "AVL.h"
 
 int *RamdomArrayGenerator(int size, int max) {
     
     static int array[100];
+    //static int *array;
     
     //give the array some ramdom initial values
-    for (int i=0; i<10; i++) {
+    for (int i=0; i<size; i++) {
         
         *(array+i) = rand();
         
@@ -16,7 +17,6 @@ int *RamdomArrayGenerator(int size, int max) {
         }
         std::cout << "Index " << i << " has been assigned a value: " << *(array+i) << ".\n";
     }
-    
     return array;
 }
 
@@ -24,17 +24,11 @@ int *RamdomArrayGenerator(int size, int max) {
 int main() {
 
     int size = 10;
-    int max = 10;
+    int max = 100;
 
     // Declaring an array thaat hold 10 elements of the int data type
     int *nums = RamdomArrayGenerator(size, max);
     
-    cout << '\n';
-    
-    //display the ramdom numbers values assigned to each element of the array (original array)
-    cout << "Original array is:\n  ";
-    for (int t=0; t<size; t++) cout << "nums[" << t << "]=" << nums[t] << " | ";
-    cout << '\n';
     cout << '\n';
 
     // Create Binary Search Tree

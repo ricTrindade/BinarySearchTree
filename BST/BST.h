@@ -18,11 +18,11 @@ class BST {
 
 private:
     Node<T> *root;
-    int numOfElements;
 
 protected:
 
     // Methods
+    int numOfElements;
     Node<T> *Insert       (Node<T> *node, T key);
     Node<T> *Remove       (Node<T> *node, T key);
     Node<T> *Search       (Node<T> *node, T key);
@@ -55,7 +55,7 @@ public:
     T  FindMin();
     T  FindMax();
     
-    
+    // Extra Methods (Not mine)
     int get_max_depth() const { return root ? root->max_depth() : 0; }
     void clear() { delete root; root = nullptr; }
     struct cell_display {
@@ -65,7 +65,7 @@ public:
         cell_display(std::string valstr) : valstr(valstr), present(true) {}
     };
     
-    using display_rows = vector< vector< cell_display > >;
+    using display_rows = vector<vector<cell_display>>;
 
     // The text tree generation code below is all iterative, to avoid stack faults.
 
@@ -160,7 +160,6 @@ public:
         // allows leaf nodes to be connected when they are
         // all with size of a single character
         if(cell_width < 3) cell_width = 3;
-
 
         // formatted_rows will hold the results
         vector<string> formatted_rows;
@@ -631,4 +630,6 @@ T* BST<T>::ConvertToArray() {
     }
     return arr;
 }
+
+
 #endif

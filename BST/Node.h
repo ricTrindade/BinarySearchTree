@@ -9,6 +9,7 @@ class Node {
 public:
 
     T Key;
+    int Height;
 
     // Constructor
     Node();
